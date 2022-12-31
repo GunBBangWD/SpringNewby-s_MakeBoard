@@ -1,19 +1,17 @@
 package GBweb.bordsite.controller;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.stereotype.Controller;
+
 public class NoticeForm {
+    @Getter @Setter
     private String name;
+    @Getter @Setter
     private String title;
+    @Getter @Setter
     private String contents;
+    @Getter @Setter
+    private String pwd;
 
-    public String getTitle() {return title;}
-
-    public void setTitle(String title) {this.title = title;}
-
-    public String getContents() {return contents;}
-
-    public void setContents(String contents) {this.contents = contents;}
-
-    public String getName() {return name;}
-
-    public void setName(String name) {this.name = name;}
 }

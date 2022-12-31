@@ -14,8 +14,8 @@ public class NoticeService {
         this.noticeRepository = memberRepository;
     }
 
-    // 회원 가입
-    public Long join(Notice notice) {
+    // 글 작성
+    public Long write(Notice notice) {
         //같은 이름이 있는 중복 회원X
         validateDuplicateMember(notice);
         noticeRepository.save(notice);

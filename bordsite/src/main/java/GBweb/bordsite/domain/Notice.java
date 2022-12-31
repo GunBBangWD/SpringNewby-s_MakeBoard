@@ -9,6 +9,15 @@ public class Notice {
     private Date day;
     private String title;
     private Long count;
+    private String pwd;
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
 
     public String getContents() {
         return contents;

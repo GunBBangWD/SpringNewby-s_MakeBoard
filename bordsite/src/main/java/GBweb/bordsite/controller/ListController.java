@@ -32,10 +32,11 @@ public class ListController {
         notice.setName(form.getName());
         notice.setTitle(form.getTitle());
         notice.setContents(form.getContents());
+        notice.setPwd(form.getPwd());
 
-        noticeService.join(notice);
+        noticeService.write(notice);
 
-        return "redirect:/";
+        return "redirect:/list";
     }
 
     @GetMapping("/view")
