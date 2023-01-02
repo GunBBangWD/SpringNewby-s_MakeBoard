@@ -13,8 +13,8 @@
             <strong>공지사항</strong>
             <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
         </div>
-        <div class="board_view_wrap">
-            <div class="board_view" th:each="notice : ${notices}">
+        <div class="board_view_wrap" th:each="notice : ${notices}">
+            <div class="board_view">
                 <div class="title" th:text="${notice.title}">
                     글 제목이 들어갑니다.
                 </div>
@@ -36,13 +36,13 @@
                         <dd th:text="${notice.count}">33</dd>
                     </dl>
                 </div>
-                <div class="cont" th:text="${notice.contents}">
+                <textarea class="cont" th:text="${notice.contents}" readonly>
                     글 내용이 들어갑니다
-                </div>
+                </textarea>
             </div>
             <div class="bt_wrap">
                 <a href="/list" class="on">목록</a>
-                <a href="/edit">수정</a>
+                <a th:href="@{'/edit' + ${notice.id}}">수정</a>
             </div>
         </div>
     </div>

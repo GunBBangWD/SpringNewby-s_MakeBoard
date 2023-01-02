@@ -20,6 +20,12 @@ public class MemoryNoticeRepository implements NoticeRepository {
     }
 
     @Override
+    public Notice edit(Notice notice) {
+        store.put(notice.getId(), notice);
+        return notice;
+    }
+
+    @Override
     public Optional<Notice> findById(Long id) {
         Long coun = store.get(id).getCount();
         store.get(id).setCount(++coun);

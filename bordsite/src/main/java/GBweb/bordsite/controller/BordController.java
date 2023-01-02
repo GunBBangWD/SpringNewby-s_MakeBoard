@@ -45,13 +45,23 @@ public class BordController {
         model.addAttribute("notices", notices.get());
         return "view";
     }
-    @GetMapping("/view")
-    public String view1() {
-        return "view";
-    }
-    @GetMapping("/edit")
-    public String editview() {
+    @GetMapping("/edit{id}")
+    public String editview(@PathVariable("id") Long id, Model model) {
+        System.out.println(id);
+        Optional<Notice> notice = noticeService.findOne(id);
+        model.addAttribute("notices", notice.get());
         return "edit";
+    }
+    @PostMapping("/edit{id}")
+    public String editview(@PathVariable("id") Long id, NoticeFormWrite form) {
+        System.out.println(id);
+        Optional<Notice> notice = noticeService.findOne(id);
+        notice.get().setTitle(form.getTitle());
+        notice.get().setName(form.getName());
+        notice.get().setPwd(form.getPwd());
+        notice.get().setContents(form.getContents());
+        noticeService.edit(notice.get());
+        return "redirect:/view"+id;
     }
     @GetMapping("/write")
     public String writeview() {

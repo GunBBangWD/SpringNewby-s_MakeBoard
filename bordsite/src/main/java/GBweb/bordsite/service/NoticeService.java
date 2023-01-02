@@ -21,6 +21,12 @@ public class NoticeService {
         noticeRepository.save(notice);
         return notice.getId();
     }
+    public Long edit(Notice notice) {
+        //같은 이름이 있는 중복 회원X
+        //validateDuplicateMember(notice);
+        noticeRepository.edit(notice);
+        return notice.getId();
+    }
 
    /* private void validateDuplicateMember(Notice notice) {
         noticeRepository.findByName(notice.getName())
