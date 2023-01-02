@@ -31,6 +31,7 @@ public class BordController {
         Notice notice = new Notice();
         notice.setName(form.getName());
         notice.setTitle(form.getTitle());
+        //notice.setContents(form.getContents().replace("\n","<br/>"));
         notice.setContents(form.getContents());
         notice.setPwd(form.getPwd());
         noticeService.write(notice);
@@ -42,6 +43,7 @@ public class BordController {
     public String view(@PathVariable("id") Long id, Model model) {
         System.out.println(id);
         Optional<Notice> notices = noticeService.findOne(id);
+//        notices.get().setContents(notices.get().getContents().replace("\n","<br/>"));
         model.addAttribute("notices", notices.get());
         return "view";
     }
