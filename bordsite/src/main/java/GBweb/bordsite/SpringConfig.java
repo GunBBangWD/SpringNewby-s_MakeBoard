@@ -33,7 +33,6 @@ public class SpringConfig implements WebMvcConfigurer {
     public SpringConfig(DataSource dataSource) {
         this.dataSource = dataSource;
     }*/
-
     @Bean
     public NoticeService memberService() {
         return new NoticeService(noticeRepository());

@@ -2,6 +2,7 @@ package GBweb.bordsite.repository;
 
 import GBweb.bordsite.domain.Notice;
 
+import java.time.LocalDate;
 import java.util.*;
 
 
@@ -10,14 +11,18 @@ public class MemoryNoticeRepository implements NoticeRepository {
     private static Map<Long, Notice> store = new HashMap<>();
     private static Long sequence = 0L;
     @Override
-    public Notice save(Notice member) {
-        member.setId(++sequence);
-        store.put(member.getId(), member);
-        return member;
+    public Notice save(Notice notice) {
+        notice.setId(++sequence);
+        notice.setCount(0L);
+        notice.setDay(LocalDate.now());
+        store.put(notice.getId(), notice);
+        return notice;
     }
 
     @Override
     public Optional<Notice> findById(Long id) {
+        Long coun = store.get(id).getCount();
+        store.get(id).setCount(++coun);
         return Optional.ofNullable(store.get(id));
     }
 

@@ -17,24 +17,24 @@ public class NoticeService {
     // 글 작성
     public Long write(Notice notice) {
         //같은 이름이 있는 중복 회원X
-        validateDuplicateMember(notice);
+        //validateDuplicateMember(notice);
         noticeRepository.save(notice);
         return notice.getId();
     }
 
-    private void validateDuplicateMember(Notice notice) {
+   /* private void validateDuplicateMember(Notice notice) {
         noticeRepository.findByName(notice.getName())
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 회원입니다.");
                 });
-    }
+    }*/
 
     // 전체 회원 조회
-    public List<Notice> findMembers() {
+    public List<Notice> findNotices() {
         return noticeRepository.findAll();
     }
 
-    public Optional<Notice> findOne(Long memberId) {
-        return noticeRepository.findById(memberId);
+    public Optional<Notice> findOne(Long noticeId) {
+        return noticeRepository.findById(noticeId);
     }
 }

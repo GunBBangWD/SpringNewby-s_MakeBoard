@@ -2,9 +2,8 @@ package GBweb.bordsite.controller;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Controller;
 
-public class NoticeForm {
+public class NoticeFormWrite {
     @Getter @Setter
     private String name;
     @Getter @Setter
@@ -13,5 +12,6 @@ public class NoticeForm {
     private String contents;
     @Getter @Setter
     private String pwd;
-
+    @Getter @Setter
+    private Long count;
 }

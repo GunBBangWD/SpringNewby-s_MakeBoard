@@ -1,12 +1,13 @@
 package GBweb.bordsite.domain;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Notice {
     private Long id;
     private String name;
     private String contents;
-    private Date day;
+    private LocalDate day;
     private String title;
     private Long count;
     private String pwd;
@@ -27,11 +28,11 @@ public class Notice {
         this.contents = contents;
     }
 
-    public Date getDay() {
+    public LocalDate getDay() {
         return day;
     }
 
-    public void setDay(Date day) {
+    public void setDay(LocalDate day) {
         this.day = day;
     }
 
