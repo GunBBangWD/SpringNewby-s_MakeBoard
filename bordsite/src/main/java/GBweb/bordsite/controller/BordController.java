@@ -22,7 +22,9 @@ public class BordController {
 
     @GetMapping("/list")
     public String listview(Model model) {
+        System.out.println("!!!!!!!!!!!뷰 겟 부분!!!!!!!!!!!!!!!!");
         List<Notice> notices = noticeService.findNotices();
+        System.out.println("!!!!!!!!!!!!!데이터 잘 받고 뷰로 넘겨주기전!!!!!!!!!!!!!!!!!");
         model.addAttribute("notices", notices);
         return "list";
     }
@@ -31,7 +33,6 @@ public class BordController {
         Notice notice = new Notice();
         notice.setName(form.getName());
         notice.setTitle(form.getTitle());
-        //notice.setContents(form.getContents().replace("\n","<br/>"));
         notice.setContents(form.getContents());
         notice.setPwd(form.getPwd());
         noticeService.write(notice);
@@ -41,9 +42,8 @@ public class BordController {
 
     @GetMapping("/view{id}")
     public String view(@PathVariable("id") Long id, Model model) {
-        System.out.println(id);
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         Optional<Notice> notices = noticeService.findOne(id);
-//        notices.get().setContents(notices.get().getContents().replace("\n","<br/>"));
         model.addAttribute("notices", notices.get());
         return "view";
     }

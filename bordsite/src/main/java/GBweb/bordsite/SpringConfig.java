@@ -1,5 +1,6 @@
 package GBweb.bordsite;
 
+import GBweb.bordsite.repository.JpaNoticeRepository;
 import GBweb.bordsite.repository.MemoryNoticeRepository;
 import GBweb.bordsite.repository.NoticeRepository;
 import GBweb.bordsite.service.NoticeService;
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import jakarta.persistence.EntityManager;
 
 @Configuration
 public class SpringConfig implements WebMvcConfigurer {
@@ -22,12 +24,12 @@ public class SpringConfig implements WebMvcConfigurer {
         /* '/font/**'로 호출하는 자원은 '/static/font/' 폴더 아래에서 찾는다. */
         registry.addResourceHandler("/font/**").addResourceLocations("classpath:/static/font/").setCachePeriod(60 * 60 * 24 * 365);
     }
-   /* private EntityManager em;
+    private EntityManager em;
 
     @Autowired
     public SpringConfig(EntityManager em) {
         this.em = em;
-    }*/
+    }
 
     /*private final DataSource dataSource;
     public SpringConfig(DataSource dataSource) {
@@ -39,9 +41,9 @@ public class SpringConfig implements WebMvcConfigurer {
     }
     @Bean
     public NoticeRepository noticeRepository() {
-         return new MemoryNoticeRepository();
+         //return new MemoryNoticeRepository();
         //return new JdbcMemberRepository(dataSource);
         //return new JdbcTemplateMemberRepository(dataSource);
-        //return new JpaMemberRepository(em);
+        return new JpaNoticeRepository(em);
     }
 }
