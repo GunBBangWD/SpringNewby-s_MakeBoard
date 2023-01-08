@@ -13,18 +13,23 @@ public class JpaNoticeRepository implements NoticeRepository{
     }
 
     @Override
-    public Notice save(Notice notice) {
-        return null;
+    public Notice write(Notice notice) {
+        em.persist(notice);
+        return notice;
     }
 
     @Override
     public Notice edit(Notice notice) {
-        return null;
+        em.merge(notice);
+        return notice;
     }
 
     @Override
     public Optional<Notice> findById(Long id) {
-        return Optional.empty();
+        Notice notice = em.find(Notice.class, id);
+        notice.setCount(notice.getCount()+1L);
+        em.merge(notice);
+        return Optional.ofNullable(notice);
     }
 
     @Override
@@ -34,8 +39,8 @@ public class JpaNoticeRepository implements NoticeRepository{
 
     @Override
     public List<Notice> findAll() {
-        System.out.println("!!!!!!!!!!!!!!!!!!jpa 진입!!!!!!!!!!!!!!!!");
-        return em.createQuery("select m from Notice m", Notice.class)
+        //System.out.println("!!!!!!!!!!!!!!!!!!jpa 진입!!!!!!!!!!!!!!!!");
+        return em.createQuery("select m from Notice m order by id desc", Notice.class)
                 .getResultList();
     }
 }

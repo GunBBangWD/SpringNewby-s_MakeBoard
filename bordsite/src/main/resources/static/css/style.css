@@ -81,6 +81,10 @@ a {
     border-bottom: 1px solid #ddd;
     font-size: 0;
 }
+.board_list > a {
+    border-bottom: 1px solid #ddd;
+    font-size: 0;
+}
 
 .board_list > div.top {
     border-bottom: 1px solid #999;

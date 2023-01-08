@@ -20,7 +20,7 @@ public class NoticeService {
     public Long write(Notice notice) {
         //같은 이름이 있는 중복 회원X
         //validateDuplicateMember(notice);
-        noticeRepository.save(notice);
+        noticeRepository.write(notice);
         return notice.getId();
     }
     public Long edit(Notice notice) {

@@ -1,4 +1,16 @@
 @media (max-width: 1000px) {
+
+    .board_view .cont {
+        padding: 15px;
+        border-bottom: 1px solid #000;
+        line-height: 160%;
+        font-size: 1.4rem;
+        width: 100%;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+
     .board_wrap {
         width: 100%;
         min-width: 320px;

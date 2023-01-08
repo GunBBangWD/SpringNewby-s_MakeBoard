@@ -7,7 +7,7 @@ import java.util.Optional;
 
 
 public interface NoticeRepository {
-    Notice save(Notice notice);
+    Notice write(Notice notice);
     Notice edit(Notice notice);
     Optional<Notice> findById(Long id);
     Optional<Notice> findByName(String name);

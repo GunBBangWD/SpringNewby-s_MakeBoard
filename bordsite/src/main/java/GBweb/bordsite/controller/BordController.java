@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,17 +25,19 @@ public class BordController {
     public String listview(Model model) {
         System.out.println("!!!!!!!!!!!뷰 겟 부분!!!!!!!!!!!!!!!!");
         List<Notice> notices = noticeService.findNotices();
-        System.out.println("!!!!!!!!!!!!!데이터 잘 받고 뷰로 넘겨주기전!!!!!!!!!!!!!!!!!");
+        //System.out.println("!!!!!!!!!!!!!데이터 잘 받고 뷰로 넘겨주기전!!!!!!!!!!!!!!!!!");
         model.addAttribute("notices", notices);
         return "list";
     }
-    @PostMapping("/notice/new")
+    @PostMapping("/write/new")
     public String create(NoticeFormWrite form) {
         Notice notice = new Notice();
         notice.setName(form.getName());
         notice.setTitle(form.getTitle());
         notice.setContents(form.getContents());
         notice.setPwd(form.getPwd());
+        notice.setDay(LocalDate.now());
+        notice.setCount(0L);
         noticeService.write(notice);
 
         return "redirect:/list";
@@ -42,7 +45,7 @@ public class BordController {
 
     @GetMapping("/view{id}")
     public String view(@PathVariable("id") Long id, Model model) {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println(id);
         Optional<Notice> notices = noticeService.findOne(id);
         model.addAttribute("notices", notices.get());
         return "view";

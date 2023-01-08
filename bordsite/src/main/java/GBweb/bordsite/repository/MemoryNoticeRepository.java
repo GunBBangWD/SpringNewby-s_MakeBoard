@@ -11,7 +11,7 @@ public class MemoryNoticeRepository implements NoticeRepository {
     private static Map<Long, Notice> store = new HashMap<>();
     private static Long sequence = 0L;
     @Override
-    public Notice save(Notice notice) {
+    public Notice write(Notice notice) {
         notice.setId(++sequence);
         notice.setCount(0L);
         notice.setDay(LocalDate.now());
