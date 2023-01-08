@@ -2,10 +2,12 @@ package GBweb.bordsite.service;
 
 import GBweb.bordsite.domain.Notice;
 import GBweb.bordsite.repository.NoticeRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class NoticeService {
 
     private final NoticeRepository noticeRepository;
@@ -37,6 +39,7 @@ public class NoticeService {
 
     // 전체 회원 조회
     public List<Notice> findNotices() {
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!서비스부분!!!!!!!!!!!!!!!");
         return noticeRepository.findAll();
     }
 
