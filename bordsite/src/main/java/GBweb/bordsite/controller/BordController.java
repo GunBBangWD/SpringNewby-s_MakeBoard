@@ -68,6 +68,14 @@ public class BordController {
         noticeService.edit(notice.get());
         return "redirect:/view"+id;
     }
+    @GetMapping("/delete{id}")
+    public String delete(@PathVariable("id") Long id, Model model) {
+        System.out.println(id);
+        Optional<Notice> notice = noticeService.findOne(id);
+        model.addAttribute("notices", notice.get());
+        return "redirect:/list";
+    }
+
     @GetMapping("/write")
     public String writeview() {
         return "write";
