@@ -26,6 +26,11 @@ public class MemoryNoticeRepository implements NoticeRepository {
     }
 
     @Override
+    public Notice delete(Notice notice) {
+        return null;
+    }
+
+    @Override
     public Optional<Notice> findById(Long id) {
         Long coun = store.get(id).getCount();
         store.get(id).setCount(++coun);

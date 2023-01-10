@@ -72,7 +72,7 @@ public class BordController {
     public String delete(@PathVariable("id") Long id, Model model) {
         System.out.println(id);
         Optional<Notice> notice = noticeService.findOne(id);
-        model.addAttribute("notices", notice.get());
+        noticeService.delete(notice.get());
         return "redirect:/list";
     }
 

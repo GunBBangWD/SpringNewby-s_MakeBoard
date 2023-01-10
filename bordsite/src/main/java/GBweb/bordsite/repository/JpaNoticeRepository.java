@@ -17,12 +17,18 @@ public class JpaNoticeRepository implements NoticeRepository{
         em.persist(notice);
         return notice;
     }
-
     @Override
     public Notice edit(Notice notice) {
         em.merge(notice);
         return notice;
     }
+
+    @Override
+    public Notice delete(Notice notice) {
+        em.remove(notice);
+        return notice;
+    }
+
 
     @Override
     public Optional<Notice> findById(Long id) {
