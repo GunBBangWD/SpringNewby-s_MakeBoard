@@ -80,4 +80,9 @@ public class BordController {
     public String writeview() {
         return "write";
     }
+
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/list";
+    }
 }
