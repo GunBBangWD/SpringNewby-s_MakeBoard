@@ -1,7 +1,6 @@
 package GBweb.bordsite;
 
 import GBweb.bordsite.repository.JpaNoticeRepository;
-import GBweb.bordsite.repository.MemoryNoticeRepository;
 import GBweb.bordsite.repository.NoticeRepository;
 import GBweb.bordsite.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -29,7 +29,6 @@ public class JpaNoticeRepository implements NoticeRepository{
         return notice;
     }
 
-
     @Override
     public Optional<Notice> findById(Long id) {
         Notice notice = em.find(Notice.class, id);
@@ -45,7 +44,6 @@ public class JpaNoticeRepository implements NoticeRepository{
 
     @Override
     public List<Notice> findAll() {
-        //System.out.println("!!!!!!!!!!!!!!!!!!jpa 진입!!!!!!!!!!!!!!!!");
         return em.createQuery("select m from Notice m order by id desc", Notice.class)
                 .getResultList();
     }

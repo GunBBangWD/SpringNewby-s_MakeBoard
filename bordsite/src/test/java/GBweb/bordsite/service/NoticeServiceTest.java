@@ -1,13 +1,11 @@
 package GBweb.bordsite.service;
 
 import GBweb.bordsite.domain.Notice;
-import GBweb.bordsite.repository.MemoryNoticeRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,7 +1,6 @@
 package GBweb.bordsite.Repository;
 
 import GBweb.bordsite.domain.Notice;
-import GBweb.bordsite.repository.MemoryNoticeRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;

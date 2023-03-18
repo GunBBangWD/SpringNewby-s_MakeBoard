@@ -45,7 +45,6 @@ public class NoticeService {
 
     // 전체 회원 조회
     public List<Notice> findNotices() {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!서비스부분!!!!!!!!!!!!!!!");
         return noticeRepository.findAll();
     }
 

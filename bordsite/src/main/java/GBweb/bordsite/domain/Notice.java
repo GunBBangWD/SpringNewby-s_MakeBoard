@@ -20,6 +20,19 @@ public class Notice {
     private Long count;
     private String pwd;
 
+    @Override
+    public String toString() {
+        return "Notice{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", contents='" + contents + '\'' +
+                ", day=" + day +
+                ", title='" + title + '\'' +
+                ", count=" + count +
+                ", pwd='" + pwd + '\'' +
+                '}';
+    }
+
     public String getPwd() {
         return pwd;
     }

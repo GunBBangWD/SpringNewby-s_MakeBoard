@@ -30,13 +30,17 @@
                         <div class="count" th:text="${notice.count}">33</div>
                     </div>
                 </div>
+
                 <div class="board_page">
                     <a href="#" class="bt first"><<</a>
                     <a href="#" class="bt prev"><</a>
-                    <a href="#" class="num on">1</a>
+                    <form style="display:inline-block;" th:each="noticeNum : ${noticesNum}" th:action="@{'/list=' + ${noticeNum}}" method="get">
+                        <a style="background-color:black;color: white;" th:href="@{'/list=' + ${noticeNum}}" th:text="${noticeNum}" class="num on">1</a>
+                    </form>
                     <a href="#" class="bt next">></a>
                     <a href="#" class="bt last">>></a>
                 </div>
+
                 <div class="bt_wrap">
                     <a href="/write" class="on">등록</a>
                     <!--<a href="#">수정</a>-->
@@ -44,4 +48,31 @@
             </div>
     </div>
 </body>
-</html> 
+</html>
+
+<script>
+    // var page = '[href="/list='+document.location.href.split("list=")[1]+'"]'
+    // console.log(page)
+    // document.querySelector(page).style.backgroundColor = 'white';
+    let listId = Number(document.location.href.split("list=")[1])-1
+    console.log(document.querySelectorAll(".board_page>form>a"))
+    document.querySelectorAll(".board_page>form>a").item(listId).style.backgroundColor = 'white'
+    document.querySelectorAll(".board_page>form>a").item(listId).style.color = 'black'
+    let listurl = document.location.href.split("list=")[0]+"list="
+        
+    listId++
+    if(listId<document.querySelectorAll(".board_page>form>a").length){
+        console.log(listId)
+        document.querySelector(".board_page>.next").href=listurl+(listId+1)
+        document.querySelector(".board_page>.last").href=listurl+(document.querySelectorAll(".board_page>form>a").length)
+    }
+    if(listId>1){
+        document.querySelector(".board_page>.prev").href=listurl+(listId-1)
+        document.querySelector(".board_page>.first").href=listurl+1
+    }
+    
+
+
+
+</script>
+
