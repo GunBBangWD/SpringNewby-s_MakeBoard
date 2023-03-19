@@ -51,9 +51,7 @@
 </html>
 
 <script>
-    // var page = '[href="/list='+document.location.href.split("list=")[1]+'"]'
-    // console.log(page)
-    // document.querySelector(page).style.backgroundColor = 'white';
+    
     let listId = Number(document.location.href.split("list=")[1])-1
     console.log(document.querySelectorAll(".board_page>form>a"))
     document.querySelectorAll(".board_page>form>a").item(listId).style.backgroundColor = 'white'

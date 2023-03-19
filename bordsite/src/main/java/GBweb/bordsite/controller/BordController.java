@@ -42,7 +42,6 @@ public class BordController {
             pageing.add(t);
         }
 
-
         List<Integer> pagenum = new ArrayList<>();
         for(int i=1;i<pageing.size()+1;i++){
             pagenum.add(i);
