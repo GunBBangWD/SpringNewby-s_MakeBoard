@@ -32,13 +32,13 @@
                 </div>
 
                 <div class="board_page">
-                    <a href="#" class="bt first"><<</a>
-                    <a href="#" class="bt prev"><</a>
+                    <a href="" class="bt first"><<</a>
+                    <a href="" class="bt prev"><</a>
                     <form style="display:inline-block;" th:each="noticeNum : ${noticesNum}" th:action="@{'/list=' + ${noticeNum}}" method="get">
                         <a style="background-color:black;color: white;" th:href="@{'/list=' + ${noticeNum}}" th:text="${noticeNum}" class="num on">1</a>
                     </form>
-                    <a href="#" class="bt next">></a>
-                    <a href="#" class="bt last">>></a>
+                    <a href="" class="bt next">></a>
+                    <a href="" class="bt last">>></a>
                 </div>
 
                 <div class="bt_wrap">
@@ -50,25 +50,41 @@
 </body>
 </html>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>
     
-    let listId = Number(document.location.href.split("list=")[1])-1
-    console.log(document.querySelectorAll(".board_page>form>a"))
-    document.querySelectorAll(".board_page>form>a").item(listId).style.backgroundColor = 'white'
-    document.querySelectorAll(".board_page>form>a").item(listId).style.color = 'black'
-    let listurl = document.location.href.split("list=")[0]+"list="
-        
+    let listId = Number($(location).attr('href').split('list=')[1])-1
+    $($('.board_page>form>a').get(listId)).css({backgroundColor:'white',color:'black'})
+    let listurl = $(location).attr('href').split('list=')[0]+'list='
+    
     listId++
-    if(listId<document.querySelectorAll(".board_page>form>a").length){
-        console.log(listId)
-        document.querySelector(".board_page>.next").href=listurl+(listId+1)
-        document.querySelector(".board_page>.last").href=listurl+(document.querySelectorAll(".board_page>form>a").length)
+    if(listId<$('.board_page>form>a').length){
+        $(".board_page>.next").attr('href',listurl+(listId+1))
+        $(".board_page>.last").attr('href',listurl+($(".board_page>form>a").length))
     }
     if(listId>1){
-        document.querySelector(".board_page>.prev").href=listurl+(listId-1)
-        document.querySelector(".board_page>.first").href=listurl+1
+        $(".board_page>.prev").attr('href',listurl+(listId-1))
+        $(".board_page>.first").attr('href',listurl+1)
     }
-    
+
+    // let listId = Number(document.location.href.split("list=")[1])-1
+    // console.log(document.querySelectorAll(".board_page>form>a"))
+    // document.querySelectorAll(".board_page>form>a").item(listId).style.backgroundColor = 'white'
+    // document.querySelectorAll(".board_page>form>a").item(listId).style.color = 'black'
+    // let listurl = document.location.href.split("list=")[0]+"list="
+
+    // listId++
+    // if(listId<document.querySelectorAll('.board_page>form>a').length){
+    //     console.log(listId)
+    //     document.querySelector(".board_page>.next").href=listurl+(listId+1)
+    //     document.querySelector(".board_page>.last").href=listurl+(document.querySelectorAll(".board_page>form>a").length)
+    // }
+    // if(listId>1){
+    //     document.querySelector(".board_page>.prev").href=listurl+(listId-1)
+    //     document.querySelector(".board_page>.first").href=listurl+1
+    // }
+
+
 
 
 
